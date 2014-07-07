@@ -1,8 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
   <head>
-    <script>
+    <title>Greetings!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+      <script>
       var name = 'Emilie';
       var months = 12;
       var raining = true;
@@ -17,13 +22,16 @@
   </head>
 
   <body>
+  <div data-role="page" id="page1">
+      <div data-role="header">
     <h1>This is Emilie's first app!</h1>
-    <h2> 12 months a year, I'm here!</h2>
-    <h1>Say 'hello!'</h1> <a href="javascript: helloBox('Hello to you too!')">'Hello!'</a>
-    <h1>So who is this?</h1> <a href="javascript: helloBox('I am an Art History student at Edinburgh Uni whose main research interests are intersections between interactive tech and art in the museum.')">About me</a>
-    <br><a href="javascript: helloBox('I am interested in developing my programming skills to make interactive fiction and apps for social good.')">Current Goals</a>
-    <br><a href="javascript: helloBox('I have a blog at emreed.net and I am @coleo_kin on Twitter!') ">How to contact me</a>
-    <br><a href="javascript: helloBox('I am here if you have any more questions.')">Nevermind, goodbye.</a>
-  </body>
+    </div>
+    <div role="main" class="ui-content">
+    <h2>Say 'hello!'</h2> <a href="javascript: helloBox('Hello to you too!')" data-role="button">'Hello!'</a>
+    <h2>So who is this?</h2> <a href="javascript: helloBox('I am an Art History student at Edinburgh Uni whose main research interests are intersections between interactive tech and art in the museum.')" data-role="button">About me</a>
+    <br><a href="javascript: helloBox('I am interested in developing my programming skills to make interactive fiction and apps for social good.')" data-role="button">Current Goals</a>
+    <br><a href="javascript: helloBox('I have a blog at emreed.net and I am @coleo_kin on Twitter!')" data-role="button">How to contact me</a>
+    <br><a href="javascript: helloBox('I am here if you have any more questions.')" data-role="button">Nevermind, goodbye.</a>
+  </div></div></body>
 
 </html>
