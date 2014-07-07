@@ -4,14 +4,12 @@
   <head>
     <title>Greetings!</title>
     <meta name="viewport" content="user-scalable=no, width=device-width">
-    <meta name="apple-mobile-web-app-capable"
-      content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent" />
+    <meta name=apple-mobile-web-app-capable content=yes>
+    <meta name=apple-mobile-web-app-status-bar-style content=black>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-      <script>
+    <script>
       var name = 'Emilie';
       var months = 12;
       var raining = true;
@@ -26,16 +24,18 @@
   </head>
 
   <body>
-  <div data-role="page" id="page1">
+    <div data-role="page" id="page1">
       <div data-role="header">
-    <h1>Emilie's app!</h1>
+        <h1>Emilie's app!</h1>
+      </div>
+      <div role="main" class="ui-content">
+        <h3>Say 'hello!'</h3> <a href="javascript: helloBox('Hello to you too!')" data-role="button">'Hello!'</a>
+        <h3>So who is this?</h3> <a href="javascript: helloBox('I am an Art History student at Edinburgh Uni whose main research interests are intersections between interactive tech and art in the museum.')" data-role="button">About me</a>
+        <br><a href="javascript: helloBox('I am interested in developing my programming skills to make interactive fiction and apps for social good.')" data-role="button">Current Goals</a>
+        <br><a href="javascript: helloBox('I have a blog at emreed.net and I am @coleo_kin on Twitter!')" data-role="button">How to contact me</a>
+        <br><a href="javascript: helloBox('I am here if you have any more questions.')" data-role="button">Nevermind, goodbye.</a>
+      </div>
     </div>
-    <div role="main" class="ui-content">
-    <h3>Say 'hello!'</h3> <a href="javascript: helloBox('Hello to you too!')" data-role="button">'Hello!'</a>
-    <h3>So who is this?</h3> <a href="javascript: helloBox('I am an Art History student at Edinburgh Uni whose main research interests are intersections between interactive tech and art in the museum.')" data-role="button">About me</a>
-    <br><a href="javascript: helloBox('I am interested in developing my programming skills to make interactive fiction and apps for social good.')" data-role="button">Current Goals</a>
-    <br><a href="javascript: helloBox('I have a blog at emreed.net and I am @coleo_kin on Twitter!')" data-role="button">How to contact me</a>
-    <br><a href="javascript: helloBox('I am here if you have any more questions.')" data-role="button">Nevermind, goodbye.</a>
-  </div></div></body>
+  </body>
 
 </html>
