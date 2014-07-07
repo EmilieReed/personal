@@ -3,10 +3,12 @@
 
   <head>
     <script>
-      var name = 'Kim';
+      var name = 'Emilie';
       var months = 12;
       var raining = true;
-      if (raining) {}
+      if (raining) {
+        javascript: helloBox("I'm damp.")
+      }
 
       function helloBox(text) {
         alert(text);
@@ -15,7 +17,14 @@
   </head>
 
   <body>
-    <h1>Say 'hello!'</h1> <a href="javascript: helloBox('hello to you too!')">'Hello!'</a>
+    <h1>This is</h1>$name
+    <h1>'s first app!</h1>$months
+    <h2>months a year, I'm here!</h2>
+    <h1>Say 'hello!'</h1> <a href="javascript: helloBox('Hello to you too!')">'Hello!'</a>
+    <h1>So who is this?</h1> <a href="javascript: helloBox('I am an Art History student at Edinburgh Uni whose main research interests are intersections between interactive tech and art in the museum.')">About me</a>
+    <a href="javascript: helloBox('I am interested in developing my programming skills to make interactive fiction and apps for social good.')">Current Goals</a>
+    <a href="javascript: helloBox('I have a blog at emreed.net and I'm @coleo_kin on Twitter!')">How to contact me</a>
+    <a href="javascript: helloBox('I'll be here if you have any more questions.')">Nevermind, goodbye.</a>
   </body>
 
 </html>
