@@ -30,6 +30,22 @@
         alert(text);
       }
     </script>
+    <script>
+      var fruitnVeg = [{
+        "name": "Carrots",
+        "desc": "A sweet and crunchy root vegetable.",
+        "period": "May to August",
+        "peak": "June",
+        "showif":
+      }, {
+        "name": "Peaches",
+        "desc": "A fuzzy and juicy pit fruit.",
+        "period": "July to September",
+        "peak": "August",
+        "showif":
+      }];
+      var Pantry = ["Olive Oil", "Veg Oil", "Basalmic Vinegar", "Red Wine Vinegar", "Salt", "Pepper", "Beans", "Brown Rice", "White Rice", "Pasta", "White Sugar", "Brown Sugar", "Garlic", "Couscous", "Honey", "Sesame Oil", "Nuts", "Stock Cubes", "Yeast", "Soy Sauce", "Dried Oats", "Starch", "Cinnamon", "Chile Powder", "Oregano", "Cumin", "Coriander", "Curry Powder", "Paprika", "5 Spice Powder", "Cocoa", "Ginger"];
+    </script>
   </head>
 
   <body ontouchmove="BlockMove(event);">
@@ -37,8 +53,10 @@
       <div data-role="header">
         <h1>vegBuilder</h1>
       </div>
-      <div role="main" class="ui-content">
-        <h3>Currently in season:</h3> <a href="#page2" data-role="button">View List</a>
+      <div role="main" class="ui-content"> <a href="#page6" data-role="button">Fruits and Vegetables</a>
+        <a href="#page7" data-role="button">Pantry Staples</a>
+        <a href="#page8" data-role="button">Custom</a>
+        <br> <a href="#page2" data-role="button">View Shopping List</a>
         <a href="#page3" data-role="button">Options</a>
       </div>
     </div>
@@ -55,10 +73,9 @@
         <h1>Options</h1>
       </div>
       <div role="main" class="ui-content">
-        <p>vegBuilder was designed by Emilie Reed</p>
-        <a href="#page4" data-role="button">View Calendar</a>
+        <p>vegBuilder was designed by Emilie Reed</p> <a href="#page4" data-role="button">View Calendar</a>
         <a href="#page5" data-role="button">View Map</a>
-        <a href="javascript: helloBox('Are you sure you want to clear the shopping list?')" data-role="button">Clear List</a>
+        <a href="javascript: helloBox('Are you sure you want to clear the shopping list?')" data-role="button">Clear Shopping List</a>
         <a href="javascript: helloBox('Are you sure you want to clear custom data?')" data-role="button">Clear Custom Data</a>
         <a href="#page1" data-role="button">Back</a>
       </div>
@@ -77,6 +94,30 @@
       </div>
       <div role="main" class="ui-content">
         <p>Map API goes here.</p> <a href="#page3" data-role="button">Back</a>
+      </div>
+    </div>
+    <div data-role="page" id="page6">
+      <div data-role="header">
+        <h1>Fruit and Veg</h1>
+      </div>
+      <div role="main" class="ui-content">
+        <p>List goes here</p> <a href="#page1" data-role="button">Back</a>
+      </div>
+    </div>
+    <div data-role="page" id="page7">
+      <div data-role="header">
+        <h1>Pantry Staples</h1>
+      </div>
+      <div role="main" class="ui-content">
+        <p>List goes here</p> <a href="#page1" data-role="button">Back</a>
+      </div>
+    </div>
+    <div data-role="page" id="page8">
+      <div data-role="header">
+        <h1>Custom</h1>
+      </div>
+      <div role="main" class="ui-content">
+        <p>List goes here</p> <a href="#page1" data-role="button">Back</a>
       </div>
     </div>
   </body>
