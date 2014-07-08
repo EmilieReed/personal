@@ -3,8 +3,8 @@
   <html manifest="cache.manifest">
 
   <head>
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
-    <link rel="apple-touch-startup-image" href="./startup.png" />
+    <link rel="apple-touch-icon" href="http://i61.tinypic.com/1znxvt0.png" />
+    <link rel="apple-touch-startup-image" href="http://i62.tinypic.com/2e55hy0.png" />
     <title>vegBuilder</title>
     <meta name="viewport" content="user-scalable=no, width=device-width">
     <meta name=apple-mobile-web-app-capable content=yes>
@@ -45,6 +45,13 @@
         "showif":
       }];
       var Pantry = ["Olive Oil", "Veg Oil", "Basalmic Vinegar", "Red Wine Vinegar", "Salt", "Pepper", "Beans", "Brown Rice", "White Rice", "Pasta", "White Sugar", "Brown Sugar", "Garlic", "Couscous", "Honey", "Sesame Oil", "Nuts", "Stock Cubes", "Yeast", "Soy Sauce", "Dried Oats", "Starch", "Cinnamon", "Chile Powder", "Oregano", "Cumin", "Coriander", "Curry Powder", "Paprika", "5 Spice Powder", "Cocoa", "Ginger"];
+    </script>
+    <script>
+      $("#list").live("pageinit", function(event) {
+        for (i = 0; i < Pantry.length; i++) {
+          $("#pantryList").append('<li><a data-role="listview" href="javascript: helloBox("Imagine a checkbox.")></a></li>');
+        }
+      });
     </script>
   </head>
 
@@ -108,8 +115,8 @@
       <div data-role="header">
         <h1>Pantry Staples</h1>
       </div>
-      <div role="main" class="ui-content">
-        <p>List goes here</p> <a href="#page1" data-role="button">Back</a>
+      <div data-role="content">
+        <ul data-role="listview" id="pantryList"></ul>
       </div>
     </div>
     <div data-role="page" id="page8">
