@@ -118,7 +118,7 @@
       $("#page7").on("pagecreate", function(event) {
         for (i = 0; i < Pantry.length; i++) {
           console.log("running")
-          $("#pantryList").append('<li><a  href="javascript: helloBox("Imagine a checkbox.")>' +Pantry[i]  + '</a></li>');
+          $("#pantryList").append('<li><a href="javascript: helloBox('check')" data-role="button">' +Pantry[i]  + '</a></li>');
         }
        $("#pantryList").trigger("refresh");
       });
