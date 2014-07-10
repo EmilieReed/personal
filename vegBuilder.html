@@ -78,7 +78,7 @@
         <h1>Pantry Staples</h1>
       </div>
       <div data-role="content">
-        <ul data-role="listview" id="pantryList"></ul>
+        <div id="pantryList"></div>
       </div>
       <div role="main" class="ui-content"> <a href="#page1" data-role="button">Back</a> 
       </div>
@@ -555,9 +555,9 @@
       $("#page7").on("pagecreate", function(event) {
         for (i = 0; i < Pantry.length; i++) {
           console.log("running")
-          $("#pantryList").append('<li><a href="javascript: helloBox(' + "'" + 'Imagine a checkbox.' + "'" + ')">' + Pantry[i].name + '</a> </li>');
+          $("#pantryList").append('<label><input type="checkbox" name="checkbox-0"> ' + Pantry[i].name + ' </label>');
         }
-        $("#pantryList").listview("refresh");
+        $("#pantryList").trigger("create");
       });
     </script>
   </body>
