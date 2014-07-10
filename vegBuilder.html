@@ -11,13 +11,6 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script>
-      var name = 'Emilie';
-      var months = 12;
-      var raining = false;
-      if (raining) {
-        javascript: helloBox("Today it is rainy out.")
-      }
-
       function helloBox(text) {
         alert(text);
       }
@@ -559,7 +552,6 @@
         "name": 0,
         "check": false,
       }];
-      
       $("#page7").on("pagecreate", function(event) {
         for (i = 0; i < Pantry.length; i++) {
           console.log("running")
