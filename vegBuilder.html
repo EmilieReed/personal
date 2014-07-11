@@ -27,6 +27,13 @@
         <a href="#page8" data-role="button">Custom</a>
         <br> <a href="#page2" data-role="button">View Shopping List</a>
         <a href="#page3" data-role="button">Options</a>
+        <br>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- vegAds -->
+        <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-6614364931276929" data-ad-slot="7328369895"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
     </div>
     <div data-role="page" id="page2">
@@ -70,24 +77,26 @@
         <h1>Fruit and Veg</h1>
       </div>
       <h3>Fruit</h3>
-        <div id="fruitList"></div>
-        <h3>Vegetables</h3>
-        <div id="vegList"></div>
-      <br><a href="#page1" data-role="button">Back</a></div>
+      <div id="fruitList"></div>
+      <h3>Vegetables</h3>
+      <div id="vegList"></div>
+      <br><a href="#page1" data-role="button">Back</a>
+    </div>
     <div data-role="page" id="page7">
       <div data-role="header">
         <h1>Pantry Staples</h1>
       </div>
-        <div id="pantryList"></div><br>
-      <a href="#page1" data-role="button">Back</a> 
-      </div>
+      <div id="pantryList"></div>
+      <br> <a href="#page1" data-role="button">Back</a> 
     </div>
     <div data-role="page" id="page8">
       <div data-role="header">
         <h1>Custom</h1>
       </div>
-        <div id="customList"></div> <br><a href="#page1" data-role="button">Back</a>
-      </div>
+      <div id="customList"></div>
+      <input type="text" id="customInput" onenter="changeText()"> <a href="#" onclick="addCustom()" data-role="button">Add to list</a>
+      <br>
+<a href="#page1" data-role="button">Back</a>
     </div>
     <script>
       var fruit = [{
@@ -495,10 +504,18 @@
         "name": "Ginger",
         "check": false
       }];
-      var custom = [{
-        "name": 0,
-        "check": false
-      }];
+      var custom = [];
+
+      function addCustom() {
+        var newtext = $("#customInput").val();
+        custom.push({
+          "name": newtext,
+          "check": false
+        });
+        console.log(custom)
+        $("#customInput").val("");
+        updateList();
+      }
       $("#page7").on("pagecreate", function(event) {
         for (i = 0; i < Pantry.length; i++) {
           console.log("running")
@@ -521,12 +538,17 @@
         $("#vegList").trigger("create");
       });
       $("#page8").on("pagecreate", function(event) {
+        updateList();
+      });
+
+      function updateList() {
+        $("#customList").html("")
         for (i = 0; i < custom.length; i++) {
           console.log("running")
           $("#customList").append('<label><input type="checkbox" name="checkbox-0"> ' + custom[i].name + ' </label>');
         }
         $("#customList").trigger("create");
-      });
+      }
     </script>
   </body>
 
