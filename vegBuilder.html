@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <html manifest="cache.manifest">
+
   <head>
     <link rel="apple-touch-icon" href="http://i61.tinypic.com/1znxvt0.png" />
     <link rel="apple-touch-startup-image" href="http://i62.tinypic.com/2e55hy0.png" />
@@ -12,11 +13,6 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="jquery.confirm.js"></script>
-    <script>
-      function helloBox(text) {
-        alert(text);
-      }
-    </script>
   </head>
 
   <body>
@@ -37,15 +33,14 @@
         <h1>Shopping List</h1>
       </div>
       <div role="main" class="ui-content">
-         <h3>Fruit</h3>
-      <br>
-      <h3>Vegetables</h3>
-      <br>
-       <h3>Pantry</h3>
-      <br>
-      <h3>Other</h3>
-      <br>
-      <a href="#page1" data-role="button">Back</a>
+        <h3>Fruit</h3>
+        <br>
+        <h3>Vegetables</h3>
+        <br>
+        <h3>Pantry</h3>
+        <br>
+        <h3>Other</h3>
+        <br> <a href="#page1" data-role="button">Back</a>
       </div>
     </div>
     <div data-role="page" id="page3">
@@ -53,7 +48,9 @@
         <h1>Options</h1>
       </div>
       <div role="main" class="ui-content">
-        <center>vegBuilder was designed by <a href="http://www.emreed.net">Emilie Reed</a> and is specifically calibrated to the seasons of the UK and similar environments. To report a bug or give feedback, send an email to <a href=mailto:contact@emreed.net>contact@emreed.net</a></center><br> <a href="#page4" data-role="button">View Calendar</a>
+        <center>vegBuilder was designed by <a href="http://www.emreed.net">Emilie Reed</a> and is specifically calibrated to the seasons of the UK and similar environments. To report a bug or give feedback, send an email to <a href=mailto:contact@emreed.net>contact@emreed.net</a>
+        </center>
+        <br> <a href="#page4" data-role="button">View Calendar</a>
         <a href="#page5" data-role="button">View Map</a>
         <button class="confirm" type="button">Clear Shopping List</button>
         <button class="confirm" type="button">Clear Custom Data</button> <a href="#page1" data-role="button">Back</a>
@@ -78,498 +75,501 @@
     <div data-role="page" id="page6">
       <div data-role="header">
         <h1>Fruit and Veg</h1>
-      </div><div role="main" class="ui-content">
-      <h3>Fruit</h3>
-      <div id="fruitList"></div>
-      <h3>Vegetables</h3>
-      <div id="vegList"></div>
-      <br><a href="#page1" data-role="button">Back</a>
-    </div>
+      </div>
+      <div role="main" class="ui-content">
+        <h3>Fruit</h3>
+        <div id="fruitList"></div>
+        <h3>Vegetables</h3>
+        <div id="vegList"></div>
+        <br><a href="#page1" data-role="button">Back</a>
+      </div>
     </div>
     <div data-role="page" id="page7">
       <div data-role="header">
         <h1>Pantry Staples</h1>
-      </div><div role="main" class="ui-content">
-      <div id="pantryList"></div>
-      <br> <a href="#page1" data-role="button">Back</a> 
-    </div>
+      </div>
+      <div role="main" class="ui-content">
+        <div id="pantryList"></div>
+        <br> <a href="#page1" data-role="button">Back</a> 
+      </div>
     </div>
     <div data-role="page" id="page8">
       <div data-role="header">
         <h1>Custom</h1>
       </div>
       <div role="main" class="ui-content">
-      <div id="customList"></div>
-      <input type="text" id="customInput" onenter="changeText()"> <a href="#" onclick="addCustom()" data-role="button">Add to list</a>
-      <br>
+        <div id="customList"></div>
+        <input type="text" id="customInput" onenter="changeText()"> <a href="#" onclick="addCustom()" data-role="button">Add to list</a>
+        <br>
 <a href="#page1" data-role="button">Back</a>
-    </div>   
+      </div>
     </div>
-    <div data-role="page" id="fruitPage"><div role="main" class="ui-content">
-<div id="fruitDetails"></div>
+    <div data-role="page" id="fruitPage">
+      <div role="main" class="ui-content">
+        <div id="fruitDetails"></div>
 <a href="#page1" data-role="button">Back</a>
-    </div></div>
-    <div id="fruitDetails"></div>
-    <script>
-      var fruit = [{
-        "name": "Cox Apple",
-        "desc": "Apples good for storing.",
-        "period": "October to January",
-        "peak": "November",
-        "check": false
-      }, {
-        "name": "Bramley Apple",
-        "desc": "Apples good for cooking.",
-        "period": "July to September",
-        "peak": "August",
-        "check": false
-      }, {
-        "name": "Blackberries",
-        "desc": "Great as a snack or to make jam.",
-        "period": "July to November",
-        "peak": "September",
-        "check": false
-      }, {
-        "name": "Blueberries",
-        "desc": "Small tangy and sweet berries common in fruit salad and baking.",
-        "period": "July to October",
-        "peak": "September",
-        "check": false
-      }, {
-        "name": "Cherries",
-        "desc": "Sweet in pies or fruit salad. Has a pit.",
-        "period": "June to August",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Cranberries",
-        "desc": "Tangy. Often used to make sauces.",
-        "period": "November and December",
-        "peak": "November",
-        "check": false
-      }, {
-        "name": "Figs",
-        "desc": "Delicately sweet fruit.",
-        "period": "July to October",
-        "peak": "August",
-        "check": false
-      }, {
-        "name": "Bartlett Pears",
-        "desc": "A juicy pear good for sauces and butters.",
-        "period": "May to August",
-        "peak": "June",
-        "check": false
-      }, {
-        "name": "Concorde Pears",
-        "desc": "The most popular type of pear.",
-        "period": "September to January",
-        "peak": "November",
-        "check": false
-      }, {
-        "name": "Greengage Plums",
-        "desc": "Suprisingly sweet small green plums.",
-        "period": "June to August",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Victoria Plums",
-        "desc": "A sweet table fruit also good for cooking.",
-        "period": "July to September",
-        "peak": "August",
-        "check": false
-      }, {
-        "name": "Raspberries",
-        "desc": "An elegant dessert garnish or healthy snack.",
-        "period": "June to October",
-        "peak": "August",
-        "check": false
-      }, {
-        "name": "Strawberries",
-        "desc": "Popular in jams, desserts, and as a snack.",
-        "period": "May to August",
-        "peak": "June",
-        "check": false
-      }];
-      var veg = [{
-        "name": "Jerusalem Artichoke",
-        "desc": "A variety of sunflower which produces a slightly sweet root vegetable.",
-        "period": "October to February",
-        "peak": "December",
-        "check": false
-      }, {
-        "name": "Globe Artichoke",
-        "desc": "An edible form of thistle that can be boiled, steamed or preserved.",
-        "period": "June to November",
-        "peak": "August",
-        "check": false
-      }, {
-        "name": "Asparagus",
-        "desc": "A spring vegetable that makes a good side dish.",
-        "period": "April to July",
-        "peak": "May",
-        "check": false
-      }, {
-        "name": "Aubergine",
-        "desc": "A purple fruit that becomes smooth and soft when cooked.",
-        "period": "April to October",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Beetroot",
-        "desc": "Try serving cold in a salad or make pickles.",
-        "period": "June to March",
-        "peak": "September",
-        "check": false
-      }, {
-        "name": "Broccoli",
-        "desc": "Full of vitamins and fiber, delicious steamed or raw with dip.",
-        "period": "April to November",
-        "peak": "June",
-        "check": false
-      }, {
-        "name": "Brussels Sprouts",
-        "desc": "Edible sprouts which look like small cabbages.",
-        "period": "October to March",
-        "peak": "December",
-        "check": false
-      }, {
-        "name": "White Cabbage",
-        "desc": "A versatile veggie which can be boiled, pickled, or used raw.",
-        "period": "October to February",
-        "peak": "December",
-        "check": false
-      }, {
-        "name": "Red Cabbage",
-        "desc": "Used in raw salads, coleslaw or as a side to meat dishes.",
-        "period": "June to October",
-        "peak": "August",
-        "check": false
-      }, {
-        "name": "Savoy Cabbage",
-        "desc": "Rich in vitamins and can keep for many weeks. Pairs well with spices and meat.",
-        "period": "September to February",
-        "peak": "December",
-        "check": false
-      }, {
-        "name": "Spring Greens",
-        "desc": "Early cabbages with rich dark leaves. Try steamed with butter.",
-        "period": "April to August",
-        "peak": "May",
-        "check": false
-      }, {
-        "name": "Kale",
-        "desc": "A hardy and long-keeping green. Bake them in the oven to make chips.",
-        "period": "December to March",
-        "peak": "January",
-        "check": false
-      }, {
-        "name": "Carrots",
-        "desc": "Sweet and crunchy, they can be eaten raw or prepared many ways.",
-        "period": "June to February",
-        "peak": "September",
-        "check": false
-      }, {
-        "name": "Cauliflower",
-        "desc": "The main ingredient in the Indian dish Aloo Gobi.",
-        "period": "November to April",
-        "peak": "January",
-        "check": false
-      }, {
-        "name": "Celery",
-        "desc": "Low calorie and crunchy. Complements sandwich fillings.",
-        "period": "September to March",
-        "peak": "December",
-        "check": false
-      }, {
-        "name": "Courgettes",
-        "desc": "Buttery-tasting and delicious summer squash.",
-        "period": "June to October",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Cucumbers",
-        "desc": "Cool and refreshing in salads, also good for pickling.",
-        "period": "June to September",
-        "peak": "August",
-        "check": false
-      }, {
-        "name": "Leeks",
-        "desc": "A crunchy veggie with a mild onion flavor.",
-        "period": "August to March",
-        "peak": "November",
-        "check": false
-      }, {
-        "name": "Iceberg Lettuce",
-        "desc": "Adds a juicy crunch to any salad.",
-        "period": "April to October",
-        "peak": "June",
-        "check": false
-      }, {
-        "name": "Rocket",
-        "desc": "Peppery, adds some green to sandwiches and baugettes.",
-        "period": "April to October",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Onions",
-        "desc": "Mainly used to add flavor or crunch to other dishes.",
-        "period": "All year",
-        "peak": "October",
-        "check": false
-      }, {
-        "name": "Parsnips",
-        "desc": "A root vegetable similar to carrots that adds richness to soups and stews.",
-        "period": "September to March",
-        "peak": "December",
-        "check": false
-      }, {
-        "name": "Peas",
-        "desc": "A sweet veggie that makes a great side dish.",
-        "period": "May to September",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Peppers",
-        "desc": "Can be used raw or cooked, adds a lot of flavor.",
-        "period": "July to October",
-        "peak": "August",
-        "check": false
-      }, {
-        "name": "King Edward Potatoes",
-        "desc": "Light and fluffy texture. Good for roasting, baking and even making gnocchi.",
-        "period": "All year",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Maris Bard Potatoes",
-        "desc": "A variety of potato ideal for boiling and frying.",
-        "period": "All year",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Maris Piper Potatoes",
-        "desc": "A variety of potato which is a great all-rounder.",
-        "period": "All year",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Rooster Potatoes",
-        "desc": "A red-skinned potato ideal for chipping, roasting and mashing.",
-        "period": "All year",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Radish",
-        "desc": "A peppery root vegetable eaten raw or steamed.",
-        "period": "April to November",
-        "peak": "June",
-        "check": false
-      }, {
-        "name": "Rhubarb",
-        "desc": "Often stewed and sweetened to star in many desserts.",
-        "period": "April to July",
-        "peak": "May",
-        "check": false
-      }, {
-        "name": "Runner Beans",
-        "desc": "Also known as string beans. A nice addition or side to many dishes.",
-        "period": "June to October",
-        "peak": "July",
-        "check": false
-      }, {
-        "name": "Shallots",
-        "desc": "A small, mild and oniony vegetable with a delicate taste.",
-        "period": "October to March",
-        "peak": "December",
-        "check": false
-      }, {
-        "name": "Spinach",
-        "desc": "A lefy green high in iron which can be cooked many ways.",
-        "period": "All Year",
-        "peak": "March",
-        "check": false
-      }, {
-        "name": "Squash",
-        "desc": "Vegetables with sweet flesh and roastable seeds which store well.",
-        "period": "September to January",
-        "peak": "October",
-        "check": false
-      }, {
-        "name": "Sweetcorn",
-        "desc": "Sweet and crunchy, can be served on the cob or otherwise.",
-        "period": "August to November",
-        "peak": "September",
-        "check": false
-      }, {
-        "name": "Tomatoes",
-        "desc": "Makes a great sauce and adds sweet juiciness to any salad.",
-        "period": "June to November",
-        "peak": "August",
-        "check": false
-      }, {
-        "name": "Turnips",
-        "desc": "A root vegetable which also produces edible greens.",
-        "period": "August to January",
-        "peak": "November",
-        "check": false
-      }, {
-        "name": "Watercress",
-        "desc": "A peppery, crispy leaf which adds flavor to salads.",
-        "period": "April to October",
-        "peak": "May, September.",
-        "check": false
-      }];
-      var Pantry = [{
-        "name": "Olive Oil",
-        "check": false
-      }, {
-        "name": "Veg Oil",
-        "check": false
-      }, {
-        "name": "Basalmic Vinegar",
-        "check": false
-      }, {
-        "name": "Red Wine Vinegar",
-        "check": false
-      }, {
-        "name": "Salt",
-        "check": false
-      }, {
-        "name": "Pepper",
-        "check": false
-      }, {
-        "name": "Beans",
-        "check": false
-      }, {
-        "name": "Brown Rice",
-        "check": false
-      }, {
-        "name": "White Rice",
-        "check": false
-      }, {
-        "name": "Pasta",
-        "check": false
-      }, {
-        "name": "White Sugar",
-        "check": false
-      }, {
-        "name": "Brown Sugar",
-        "check": false
-      }, {
-        "name": "Garlic",
-        "check": false
-      }, {
-        "name": "Couscous",
-        "check": false
-      }, {
-        "name": "Honey",
-        "check": false
-      }, {
-        "name": "Sesame Oil",
-        "check": false
-      }, {
-        "name": "Nuts",
-        "check": false
-      }, {
-        "name": "Stock Cubes",
-        "check": false
-      }, {
-        "name": "Yeast",
-        "check": false
-      }, {
-        "name": "Soy Sauce",
-        "check": false
-      }, {
-        "name": "Dried Oats",
-        "check": false
-      }, {
-        "name": "Starch",
-        "check": false
-      }, {
-        "name": "Cinnamon",
-        "check": false
-      }, {
-        "name": "Chile Powder",
-        "check": false
-      }, {
-        "name": "Oregano",
-        "check": false
-      }, {
-        "name": "Cumin",
-        "check": false
-      }, {
-        "name": "Coriander",
-        "check": false
-      }, {
-        "name": "Curry Powder",
-        "check": false
-      }, {
-        "name": "Paprika",
-        "check": false
-      }, {
-        "name": "5 Spice Powder",
-        "check": false
-      }, {
-        "name": "Cocoa",
-        "check": false
-      }, {
-        "name": "Ginger",
-        "check": false
-      }];
-      var custom = [];
-
-      function addCustom() {
-        var newtext = $("#customInput").val();
-        custom.push({
-          "name": newtext,
+      </div>
+      </div>
+      <script>
+        var fruit = [{
+          "name": "Cox Apple",
+          "desc": "Apples good for storing.",
+          "period": "October to January",
+          "peak": "November",
           "check": false
-        });
-        console.log(custom)
-        $("#customInput").val("");
-        updateList();
-      }
-      $("#page7").on("pagecreate", function(event) {
-        for (i = 0; i < Pantry.length; i++) {
-          console.log("running")
-          $("#pantryList").append('<label><input type="checkbox" name= pantry[i].name > ' + Pantry[i].name + ' </label>');
-        }
-        $("#pantryList").trigger("create");
-      });
-      $("#page6").on("pagecreate", function(event) {
-        for (i = 0; i < fruit.length; i++) {
-          console.log("running")
-          $("#fruitList").append('<label><input type="checkbox" name= fruit[i].name > ' + fruit[i].name + '</label><a href="#" onclick="infoFruit("+ i +")">  <img src=http://i57.tinypic.com/1eo1tu.png></a></info>');
-        }
-        $("#fruitList").trigger("create");
-      });
-      $("#page6").on("pagecreate", function(event) {
-        for (i = 0; i < veg.length; i++) {
-          console.log("running")
-          $("#vegList").append('<label><input type="checkbox" name= veg[i].name > ' + veg[i].name + ' </label>');
-        }
-        $("#vegList").trigger("create");
-      });
-      $("#page8").on("pagecreate", function(event) {
-        updateList();
-      });
+        }, {
+          "name": "Bramley Apple",
+          "desc": "Apples good for cooking.",
+          "period": "July to September",
+          "peak": "August",
+          "check": false
+        }, {
+          "name": "Blackberries",
+          "desc": "Great as a snack or to make jam.",
+          "period": "July to November",
+          "peak": "September",
+          "check": false
+        }, {
+          "name": "Blueberries",
+          "desc": "Small tangy and sweet berries common in fruit salad and baking.",
+          "period": "July to October",
+          "peak": "September",
+          "check": false
+        }, {
+          "name": "Cherries",
+          "desc": "Sweet in pies or fruit salad. Has a pit.",
+          "period": "June to August",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Cranberries",
+          "desc": "Tangy. Often used to make sauces.",
+          "period": "November and December",
+          "peak": "November",
+          "check": false
+        }, {
+          "name": "Figs",
+          "desc": "Delicately sweet fruit.",
+          "period": "July to October",
+          "peak": "August",
+          "check": false
+        }, {
+          "name": "Bartlett Pears",
+          "desc": "A juicy pear good for sauces and butters.",
+          "period": "May to August",
+          "peak": "June",
+          "check": false
+        }, {
+          "name": "Concorde Pears",
+          "desc": "The most popular type of pear.",
+          "period": "September to January",
+          "peak": "November",
+          "check": false
+        }, {
+          "name": "Greengage Plums",
+          "desc": "Suprisingly sweet small green plums.",
+          "period": "June to August",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Victoria Plums",
+          "desc": "A sweet table fruit also good for cooking.",
+          "period": "July to September",
+          "peak": "August",
+          "check": false
+        }, {
+          "name": "Raspberries",
+          "desc": "An elegant dessert garnish or healthy snack.",
+          "period": "June to October",
+          "peak": "August",
+          "check": false
+        }, {
+          "name": "Strawberries",
+          "desc": "Popular in jams, desserts, and as a snack.",
+          "period": "May to August",
+          "peak": "June",
+          "check": false
+        }];
+        var veg = [{
+          "name": "Jerusalem Artichoke",
+          "desc": "A variety of sunflower which produces a slightly sweet root vegetable.",
+          "period": "October to February",
+          "peak": "December",
+          "check": false
+        }, {
+          "name": "Globe Artichoke",
+          "desc": "An edible form of thistle that can be boiled, steamed or preserved.",
+          "period": "June to November",
+          "peak": "August",
+          "check": false
+        }, {
+          "name": "Asparagus",
+          "desc": "A spring vegetable that makes a good side dish.",
+          "period": "April to July",
+          "peak": "May",
+          "check": false
+        }, {
+          "name": "Aubergine",
+          "desc": "A purple fruit that becomes smooth and soft when cooked.",
+          "period": "April to October",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Beetroot",
+          "desc": "Try serving cold in a salad or make pickles.",
+          "period": "June to March",
+          "peak": "September",
+          "check": false
+        }, {
+          "name": "Broccoli",
+          "desc": "Full of vitamins and fiber, delicious steamed or raw with dip.",
+          "period": "April to November",
+          "peak": "June",
+          "check": false
+        }, {
+          "name": "Brussels Sprouts",
+          "desc": "Edible sprouts which look like small cabbages.",
+          "period": "October to March",
+          "peak": "December",
+          "check": false
+        }, {
+          "name": "White Cabbage",
+          "desc": "A versatile veggie which can be boiled, pickled, or used raw.",
+          "period": "October to February",
+          "peak": "December",
+          "check": false
+        }, {
+          "name": "Red Cabbage",
+          "desc": "Used in raw salads, coleslaw or as a side to meat dishes.",
+          "period": "June to October",
+          "peak": "August",
+          "check": false
+        }, {
+          "name": "Savoy Cabbage",
+          "desc": "Rich in vitamins and can keep for many weeks. Pairs well with spices and meat.",
+          "period": "September to February",
+          "peak": "December",
+          "check": false
+        }, {
+          "name": "Spring Greens",
+          "desc": "Early cabbages with rich dark leaves. Try steamed with butter.",
+          "period": "April to August",
+          "peak": "May",
+          "check": false
+        }, {
+          "name": "Kale",
+          "desc": "A hardy and long-keeping green. Bake them in the oven to make chips.",
+          "period": "December to March",
+          "peak": "January",
+          "check": false
+        }, {
+          "name": "Carrots",
+          "desc": "Sweet and crunchy, they can be eaten raw or prepared many ways.",
+          "period": "June to February",
+          "peak": "September",
+          "check": false
+        }, {
+          "name": "Cauliflower",
+          "desc": "The main ingredient in the Indian dish Aloo Gobi.",
+          "period": "November to April",
+          "peak": "January",
+          "check": false
+        }, {
+          "name": "Celery",
+          "desc": "Low calorie and crunchy. Complements sandwich fillings.",
+          "period": "September to March",
+          "peak": "December",
+          "check": false
+        }, {
+          "name": "Courgettes",
+          "desc": "Buttery-tasting and delicious summer squash.",
+          "period": "June to October",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Cucumbers",
+          "desc": "Cool and refreshing in salads, also good for pickling.",
+          "period": "June to September",
+          "peak": "August",
+          "check": false
+        }, {
+          "name": "Leeks",
+          "desc": "A crunchy veggie with a mild onion flavor.",
+          "period": "August to March",
+          "peak": "November",
+          "check": false
+        }, {
+          "name": "Iceberg Lettuce",
+          "desc": "Adds a juicy crunch to any salad.",
+          "period": "April to October",
+          "peak": "June",
+          "check": false
+        }, {
+          "name": "Rocket",
+          "desc": "Peppery, adds some green to sandwiches and baugettes.",
+          "period": "April to October",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Onions",
+          "desc": "Mainly used to add flavor or crunch to other dishes.",
+          "period": "All year",
+          "peak": "October",
+          "check": false
+        }, {
+          "name": "Parsnips",
+          "desc": "A root vegetable similar to carrots that adds richness to soups and stews.",
+          "period": "September to March",
+          "peak": "December",
+          "check": false
+        }, {
+          "name": "Peas",
+          "desc": "A sweet veggie that makes a great side dish.",
+          "period": "May to September",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Peppers",
+          "desc": "Can be used raw or cooked, adds a lot of flavor.",
+          "period": "July to October",
+          "peak": "August",
+          "check": false
+        }, {
+          "name": "King Edward Potatoes",
+          "desc": "Light and fluffy texture. Good for roasting, baking and even making gnocchi.",
+          "period": "All year",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Maris Bard Potatoes",
+          "desc": "A variety of potato ideal for boiling and frying.",
+          "period": "All year",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Maris Piper Potatoes",
+          "desc": "A variety of potato which is a great all-rounder.",
+          "period": "All year",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Rooster Potatoes",
+          "desc": "A red-skinned potato ideal for chipping, roasting and mashing.",
+          "period": "All year",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Radish",
+          "desc": "A peppery root vegetable eaten raw or steamed.",
+          "period": "April to November",
+          "peak": "June",
+          "check": false
+        }, {
+          "name": "Rhubarb",
+          "desc": "Often stewed and sweetened to star in many desserts.",
+          "period": "April to July",
+          "peak": "May",
+          "check": false
+        }, {
+          "name": "Runner Beans",
+          "desc": "Also known as string beans. A nice addition or side to many dishes.",
+          "period": "June to October",
+          "peak": "July",
+          "check": false
+        }, {
+          "name": "Shallots",
+          "desc": "A small, mild and oniony vegetable with a delicate taste.",
+          "period": "October to March",
+          "peak": "December",
+          "check": false
+        }, {
+          "name": "Spinach",
+          "desc": "A lefy green high in iron which can be cooked many ways.",
+          "period": "All Year",
+          "peak": "March",
+          "check": false
+        }, {
+          "name": "Squash",
+          "desc": "Vegetables with sweet flesh and roastable seeds which store well.",
+          "period": "September to January",
+          "peak": "October",
+          "check": false
+        }, {
+          "name": "Sweetcorn",
+          "desc": "Sweet and crunchy, can be served on the cob or otherwise.",
+          "period": "August to November",
+          "peak": "September",
+          "check": false
+        }, {
+          "name": "Tomatoes",
+          "desc": "Makes a great sauce and adds sweet juiciness to any salad.",
+          "period": "June to November",
+          "peak": "August",
+          "check": false
+        }, {
+          "name": "Turnips",
+          "desc": "A root vegetable which also produces edible greens.",
+          "period": "August to January",
+          "peak": "November",
+          "check": false
+        }, {
+          "name": "Watercress",
+          "desc": "A peppery, crispy leaf which adds flavor to salads.",
+          "period": "April to October",
+          "peak": "May, September.",
+          "check": false
+        }];
+        var Pantry = [{
+          "name": "Olive Oil",
+          "check": false
+        }, {
+          "name": "Veg Oil",
+          "check": false
+        }, {
+          "name": "Basalmic Vinegar",
+          "check": false
+        }, {
+          "name": "Red Wine Vinegar",
+          "check": false
+        }, {
+          "name": "Salt",
+          "check": false
+        }, {
+          "name": "Pepper",
+          "check": false
+        }, {
+          "name": "Beans",
+          "check": false
+        }, {
+          "name": "Brown Rice",
+          "check": false
+        }, {
+          "name": "White Rice",
+          "check": false
+        }, {
+          "name": "Pasta",
+          "check": false
+        }, {
+          "name": "White Sugar",
+          "check": false
+        }, {
+          "name": "Brown Sugar",
+          "check": false
+        }, {
+          "name": "Garlic",
+          "check": false
+        }, {
+          "name": "Couscous",
+          "check": false
+        }, {
+          "name": "Honey",
+          "check": false
+        }, {
+          "name": "Sesame Oil",
+          "check": false
+        }, {
+          "name": "Nuts",
+          "check": false
+        }, {
+          "name": "Stock Cubes",
+          "check": false
+        }, {
+          "name": "Yeast",
+          "check": false
+        }, {
+          "name": "Soy Sauce",
+          "check": false
+        }, {
+          "name": "Dried Oats",
+          "check": false
+        }, {
+          "name": "Starch",
+          "check": false
+        }, {
+          "name": "Cinnamon",
+          "check": false
+        }, {
+          "name": "Chile Powder",
+          "check": false
+        }, {
+          "name": "Oregano",
+          "check": false
+        }, {
+          "name": "Cumin",
+          "check": false
+        }, {
+          "name": "Coriander",
+          "check": false
+        }, {
+          "name": "Curry Powder",
+          "check": false
+        }, {
+          "name": "Paprika",
+          "check": false
+        }, {
+          "name": "5 Spice Powder",
+          "check": false
+        }, {
+          "name": "Cocoa",
+          "check": false
+        }, {
+          "name": "Ginger",
+          "check": false
+        }];
+        var custom = [];
 
-      function updateList() {
-        $("#customList").html("")
-        for (i = 0; i < custom.length; i++) {
-          console.log("running")
-          $("#customList").append('<label><input type="checkbox" name= custom[i].name> ' + custom[i].name + ' </label>');
+        function addCustom() {
+          var newtext = $("#customInput").val();
+          custom.push({
+            "name": newtext,
+            "check": false
+          });
+          console.log(custom)
+          $("#customInput").val("");
+          updateList();
         }
-        $("#customList").trigger("create");
-      }
-
-      function infoFruit(i) {
-        var fruitContainer = document.getElementById("fruitDetails");
-        fruitContainer.innerHTML = '<h1>' + fruit[i].name + "</h1><br>" + fruit[i].desc + '<br>Period:' + fruit[i].period + '<br>Peak:' + fruit[i].period;
-        $.mobile.changePage('#fruitPage', {
-          role: 'dialog'
+        $("#page7").on("pagecreate", function(event) {
+          for (i = 0; i < Pantry.length; i++) {
+            console.log("running")
+            $("#pantryList").append('<label><input type="checkbox" name= pantry[i].name > ' + Pantry[i].name + ' </label>');
+          }
+          $("#pantryList").trigger("create");
         });
-      }
-    </script>
+        $("#page6").on("pagecreate", function(event) {
+          for (i = 0; i < fruit.length; i++) {
+            console.log("running")
+            $("#fruitList").append('<label><input type="checkbox" name= fruit[i].name > ' + fruit[i].name + '</label><a href="#" onclick="infoFruit("+ i +")">  <img src=http://i57.tinypic.com/1eo1tu.png></a></info>');
+          }
+          $("#fruitList").trigger("create");
+        });
+        $("#page6").on("pagecreate", function(event) {
+          for (i = 0; i < veg.length; i++) {
+            console.log("running")
+            $("#vegList").append('<label><input type="checkbox" name= veg[i].name > ' + veg[i].name + ' </label>');
+          }
+          $("#vegList").trigger("create");
+        });
+        $("#page8").on("pagecreate", function(event) {
+          updateList();
+        });
+
+        function updateList() {
+          $("#customList").html("")
+          for (i = 0; i < custom.length; i++) {
+            console.log("running")
+            $("#customList").append('<label><input type="checkbox" name= custom[i].name> ' + custom[i].name + ' </label>');
+          }
+          $("#customList").trigger("create");
+        };
+
+        function infoFruit(i) {
+          var fruitContainer = document.getElementById("fruitDetails");
+          fruitContainer.innerHTML = '<h1>' + fruit[i].name + "</h1><br>" + fruit[i].desc + '<br>Period:' + fruit[i].period + '<br>Peak:' + fruit[i].period;
+          $.mobile.changePage('#fruitPage', {
+            role: 'dialog'
+          });
+        };
+      </script>
   </body>
 
   </html>
