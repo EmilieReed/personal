@@ -110,6 +110,12 @@
 <a href="#page1" data-role="button">Back</a>
       </div>
       </div>
+      <div data-role="page" id="vegPage">
+      <div role="main" class="ui-content">
+        <div id="vegDetails"></div>
+<a href="#page1" data-role="button">Back</a>
+      </div>
+      </div>
       <script>
         var fruit = [{
           "name": "Cox Apple",
@@ -545,7 +551,7 @@
         $("#page6").on("pagecreate", function(event) {
           for (i = 0; i < veg.length; i++) {
             console.log("running")
-            $("#vegList").append('<label><input type="checkbox" name= veg[i].name > ' + veg[i].name + ' </label>');
+            $("#vegList").append('<label><input type="checkbox" name= veg[i].name > ' + veg[i].name + ' </label><a href="#" onclick="infoVeg('+i+')">  <img src=http://i57.tinypic.com/1eo1tu.png></a></info>');
           }
           $("#vegList").trigger("create");
         });
@@ -566,6 +572,13 @@
           var fruitContainer = document.getElementById("fruitDetails");
           fruitDetails.innerHTML = '<h1>' + fruit[i].name + "</h1><br>" + fruit[i].desc + '<br>Period: ' + fruit[i].period + '<br>Peak: ' + fruit[i].peak;
           $.mobile.changePage('#fruitPage', {
+            role: 'dialog'
+          });
+        };
+        function infoVeg(i) {
+          var vegContainer = document.getElementById("vegDetails");
+          vegDetails.innerHTML = '<h1>' + veg[i].name + "</h1><br>" + veg[i].desc + '<br>Period: ' + veg[i].period + '<br>Peak: ' + veg[i].peak;
+          $.mobile.changePage('#vegPage', {
             role: 'dialog'
           });
         };
