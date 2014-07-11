@@ -538,7 +538,7 @@
         $("#page6").on("pagecreate", function(event) {
           for (i = 0; i < fruit.length; i++) {
             console.log("running")
-            $("#fruitList").append('<label><input type="checkbox" name= fruit[i].name > ' + fruit[i].name + '</label><a href="#" onclick="infoFruit("+ i +")">  <img src=http://i57.tinypic.com/1eo1tu.png></a></info>');
+            $("#fruitList").append('<label><input type="checkbox" name= fruit[i].name > ' + fruit[i].name + '</label><a href="#" onclick="infoFruit('+i+')">  <img src=http://i57.tinypic.com/1eo1tu.png></a></info>');
           }
           $("#fruitList").trigger("create");
         });
@@ -564,7 +564,7 @@
 
         function infoFruit(i) {
           var fruitContainer = document.getElementById("fruitDetails");
-          fruitContainer.innerHTML = '<h1>' + fruit[i].name + "</h1><br>" + fruit[i].desc + '<br>Period:' + fruit[i].period + '<br>Peak:' + fruit[i].period;
+          fruitDetails.innerHTML = '<h1>' + fruit[i].name + "</h1><br>" + fruit[i].desc + '<br>Period: ' + fruit[i].period + '<br>Peak: ' + fruit[i].peak;
           $.mobile.changePage('#fruitPage', {
             role: 'dialog'
           });
