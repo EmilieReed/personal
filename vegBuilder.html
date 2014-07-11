@@ -37,7 +37,15 @@
         <h1>Shopping List</h1>
       </div>
       <div role="main" class="ui-content">
-        <p>List goes here</p> <a href="#page1" data-role="button">Back</a>
+         <h3>Fruit</h3>
+      <br>
+      <h3>Vegetables</h3>
+      <br>
+       <h3>Pantry</h3>
+      <br>
+      <h3>Other</h3>
+      <br>
+      <a href="#page1" data-role="button">Back</a>
       </div>
     </div>
     <div data-role="page" id="page3">
@@ -45,7 +53,7 @@
         <h1>Options</h1>
       </div>
       <div role="main" class="ui-content">
-        <p>vegBuilder was designed by Emilie Reed</p> <a href="#page4" data-role="button">View Calendar</a>
+        <center>vegBuilder was designed by <a href="http://www.emreed.net">Emilie Reed</a> and is specifically calibrated to the seasons of the UK and similar environments. To report a bug or give feedback, send an email to <a href=mailto:contact@emreed.net>contact@emreed.net</a></center><br> <a href="#page4" data-role="button">View Calendar</a>
         <a href="#page5" data-role="button">View Map</a>
         <button class="confirm" type="button">Clear Shopping List</button>
         <button class="confirm" type="button">Clear Custom Data</button> <a href="#page1" data-role="button">Back</a>
@@ -514,21 +522,21 @@
       $("#page7").on("pagecreate", function(event) {
         for (i = 0; i < Pantry.length; i++) {
           console.log("running")
-          $("#pantryList").append('<label><input type="checkbox" name="checkbox-0"> ' + Pantry[i].name + ' </label>');
+          $("#pantryList").append('<label><input type="checkbox" name= pantry[i].name > ' + Pantry[i].name + ' </label>');
         }
         $("#pantryList").trigger("create");
       });
       $("#page6").on("pagecreate", function(event) {
         for (i = 0; i < fruit.length; i++) {
           console.log("running")
-          $("#fruitList").append('<info type= "button"> <input type="checkbox" name=fruit[i].name>           ' + fruit[i].name + ' <a href="#" onclick="infoFruit()">             <img src=http://i57.tinypic.com/1eo1tu.png></a></info>');
+          $("#fruitList").append('<label><input type="checkbox" name= fruit[i].name > ' + fruit[i].name + '</label><a href="#" onclick="infoFruit()">  <img src=http://i57.tinypic.com/1eo1tu.png></a></info>');
         }
         $("#fruitList").trigger("create");
       });
       $("#page6").on("pagecreate", function(event) {
         for (i = 0; i < veg.length; i++) {
           console.log("running")
-          $("#vegList").append('<label><input type="checkbox" name="checkbox-0"> ' + veg[i].name + ' </label>');
+          $("#vegList").append('<label><input type="checkbox" name= veg[i].name > ' + veg[i].name + ' </label>');
         }
         $("#vegList").trigger("create");
       });
@@ -540,7 +548,7 @@
         $("#customList").html("")
         for (i = 0; i < custom.length; i++) {
           console.log("running")
-          $("#customList").append('<label><input type="checkbox" name="checkbox-0"> ' + custom[i].name + ' </label>');
+          $("#customList").append('<label><input type="checkbox" name= custom[i].name> ' + custom[i].name + ' </label>');
         }
         $("#customList").trigger("create");
       }
