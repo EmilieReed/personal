@@ -14,6 +14,31 @@
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="jquery.confirm.js"></script>
     <style>
+      html,
+      body,
+      #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiG-dZyjJgeMWdPd3zu_RKSqB85-nH2Ag">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var map;
+
+        function initialize() {
+          var mapOptions = {
+            zoom: 8,
+            center: new google.maps.LatLng(-34.397, 150.644)
+          };
+          map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+      };
+    </script>
+    <style>
       .info {
         background: #ffffdd url("http://i57.tinypic.com/1eo1tu.png");
         border-radius: 10%;
@@ -81,7 +106,60 @@
         <h1>Food Calendar</h1>
       </div>
       <div role="main" class="ui-content">
-        <p>Calendar API goes here.</p> <a href="#page3" data-role="button">Back</a>
+        <table>
+          <tr>
+            <td>Month</td>
+            <td>Seasonal Veg</td>
+          </tr>
+          <tr>
+            <td>JAN</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>FEB</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>MAR</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>APR</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>MAY</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>JUN</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>JUL</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>AUG</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>SEP</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>OCT</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>NOV</td>
+            <td>STUFF</td>
+          </tr>
+          <tr>
+            <td>DEC</td>
+            <td>STUFF</td>
+          </tr>
+        </table> <a href="#page3" data-role="button">Back</a>
       </div>
     </div>
     <div data-role="page" id="page5">
@@ -89,7 +167,7 @@
         <h1>Food Map</h1>
       </div>
       <div role="main" class="ui-content">
-        <p>Map API goes here.</p> <a href="#page3" data-role="button">Back</a>
+        <div id="map-canvas">map</div> <a href="#page3" data-role="button">Back</a>
       </div>
     </div>
     <div data-role="page" id="page6">
@@ -632,38 +710,16 @@
         $("#vegList").trigger("create");
       });
       $("#page2").on("pagecreate", function(event) {
-        for (i = 0; i < shoppingList.veg.length; i++) {
-          console.log("running 2")
-          $("shoppingList.veg").append("name");
-        }
-        $("shoppingList.veg").trigger("create");
-      });
-      $("#page2").on("pagecreate", function(event) {
-        for (i = 0; i < shoppingList.fruit.length; i++) {
-          console.log("running 2")
-          $("shoppingList.fruit").append("name");
-        }
-        $("shoppingList.fruit").trigger("create");
-      });
-      $("#page2").on("pagecreate", function(event) {
-        for (i = 0; i < shoppingList.custom.length; i++) {
-          console.log("running")
-          $("shoppingList.custom").append("name");
-        }
-        $("shoppingList.custom").trigger("create");
-      });
-      $("#page2").on("pagecreate", function(event) {
-        for (i = 0; i < shoppingList.Pantry.length; i++) {
-          console.log("running")
-          $("shoppingList.Pantry").append("name");
-        }
-        $("shoppingList.Pantry").trigger("create");
+        makeShoppinglist ();
+        console.log("running")
       });
       $("#page8").on("pagecreate", function(event) {
         updateList();
       });
+     
+      function makeShoppinglist () {
       $.each($("input .fruit"), function(key, fruit) {
-        if (fruit.val() == true) {
+        if (fruit.is(":checked")) {
           shoppingList.fruit.push({
             name: $(fruit).attr("name"),
             state: false
@@ -694,7 +750,9 @@
           });
         };
       });
-
+      console.log(shoppingList)
+        console.log($("input .veg"))
+      }
       function updateList() {
         $("#customList").html("")
         for (i = 0; i < custom.length; i++) {
