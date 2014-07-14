@@ -3,20 +3,19 @@
   <html manifest="cache.manifest">
 
   <head>
-    <link rel="apple-touch-icon" href="http://i61.tinypic.com/1znxvt0.png" />
-    <link rel="apple-touch-startup-image" href="http://i62.tinypic.com/2e55hy0.png" />
+    <link rel="apple-touch-icon" href="http://i61.tinypic.com/1znxvt0.png">
+    <link rel="apple-touch-startup-image" href="http://i62.tinypic.com/2e55hy0.png">
     <title>vegBuilder</title>
-    <meta name="viewport" content="user-scalable=no, width=device-width" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="viewport" content="user-scalable=no, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="jquery.confirm.js"></script>
     <script src="http://cdn.jsdelivr.net/jquery.cookie/1.4.0/jquery.cookie.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 
     <style>
@@ -54,42 +53,26 @@
       repopulateCheckboxes();
     </script>
     <script>
-      // CODE EXAMPLE FOR A GEOLOCATIVE APP WITH GOOGLE MAPS.
-       // READ MORE AT:
-       // https://developers.google.com/maps/documentation
-       // http://www.w3schools.com/html/html5_geolocation.asp
-       // Public variables
       var map, userMarker, watchGPS;
-       // Function that draws the map and overlays custom data.
       function initialise() {
         $("#map-canvas").css('width', '100%');
         $("#map-canvas").css('height', '300px');
         map = new google.maps.Map(document.getElementById('map-canvas'));
-        // Replace the URL with the URL of your own google map.
-        // Right-click the KML symbol and copy the URL.
         var kmlLayer = new google.maps.KmlLayer('https://mapsengine.google.com/map/kml?hl=en&authuser=0&mid=zmFg-0lw5lnE.kjEwlyHzJHR4', {
           suppressInfoWindows: false
         });
         kmlLayer.setMap(map);
-        // Create custom icon showing the location of the user
         userMarker = new google.maps.Marker({
           map: map,
           title: "You are here!"
         });
         userMarker.setIcon("https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=glyphish_walk|FBA");
-        // Call function that attempts to find user's location
         getLocation();
       }
-       // Function that retrieves user's initial location and
-       // then continues to track their position on the map.
-       // Users must agree to share their position.
       function getLocation() {
         if (navigator.geolocation) {
-          // Attempt to track user's position.
           watchGPS = navigator.geolocation.watchPosition(function(position) {
-            // Store the reading of the longitude and latitute
             var userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            // Update the user map marker
             userMarker.setPosition(userLocation);
           });
         } else {
@@ -841,6 +824,9 @@
           role: 'dialog'
         });
       };
+      var d = new Date();
+      var month = d.getMonth();
+      console.log(month);
     </script>
   </body>
 
