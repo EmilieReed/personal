@@ -13,6 +13,21 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="jquery.confirm.js"></script>
+    <style>
+    .info {
+      background: #ffffdd url("http://i57.tinypic.com/1eo1tu.png");
+      border-radius: 10%;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 2.7em;
+      height: 2.7em;
+      position: absolute;
+      border: 1px solid #ccc;
+      right: 15px;
+      z-index: 99999;
+    }
+    
+    </style>
   </head>
 
   <body>
@@ -544,14 +559,14 @@
         $("#page6").on("pagecreate", function(event) {
           for (i = 0; i < fruit.length; i++) {
             console.log("running")
-            $("#fruitList").append('<label><input type="checkbox" name= fruit[i].name > ' + fruit[i].name + '</label><a href="#" onclick="infoFruit('+i+')">  <img src=http://i57.tinypic.com/1eo1tu.png></a></info>');
+            $("#fruitList").append('<a class="info" href="#" onclick="infoFruit('+i+')"></a><label><input type="checkbox" name= fruit[i].name > ' + fruit[i].name + '</label>');
           }
           $("#fruitList").trigger("create");
         });
         $("#page6").on("pagecreate", function(event) {
           for (i = 0; i < veg.length; i++) {
             console.log("running")
-            $("#vegList").append('<label><input type="checkbox" name= veg[i].name > ' + veg[i].name + ' </label><a href="#" onclick="infoVeg('+i+')">  <img src=http://i57.tinypic.com/1eo1tu.png></a></info>');
+            $("#vegList").append('<a class="info" href="#" onclick="infoVeg('+i+')"></a><label><input type="checkbox" name= veg[i].name > ' + veg[i].name + ' </label>');
           }
           $("#vegList").trigger("create");
         });
