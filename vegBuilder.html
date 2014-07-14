@@ -24,76 +24,75 @@
         padding: 0px
       }
     </style>
-    
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    
     <script>
-    
-        // CODE EXAMPLE FOR A GEOLOCATIVE APP WITH GOOGLE MAPS.
-        // READ MORE AT:
-        // https://developers.google.com/maps/documentation
-        // http://www.w3schools.com/html/html5_geolocation.asp
-    
-    
-        // Public variables
-        
-        var map, userMarker, watchGPS; 
-    
-    
-    
-        // Function that draws the map and overlays custom data.
-    
-        function initialise() {
-          $("#map-canvas").css('width','100%');
-          $("#map-canvas").css('height','300px');
-          map = new google.maps.Map(document.getElementById('map-canvas'));
-          
-          // Replace the URL with the URL of your own google map.
-          // Right-click the KML symbol and copy the URL.
-          
+      $(":checkbox").on("change", function() {
+        var checkboxValues = {};
+        $(":checkbox").each(function() {
+          checkboxValues[this.id] = this.checked;
+        });
+        $.cookie('checkboxValues', checkboxValues, {
+          expires: 30,
+          path: '/'
+        })
+      });
 
-      var kmlLayer = new google.maps.KmlLayer('https://mapsengine.google.com/map/kml?hl=en&authuser=0&mid=zmFg-0lw5lnE.kjEwlyHzJHR4', {suppressInfoWindows: false});
-          kmlLayer.setMap(map);
-
-
-          // Create custom icon showing the location of the user
-          userMarker = new google.maps.Marker({
-            map: map,
-            title:"You are here!"
+      function repopulateCheckboxes() {
+        var checkboxValues = $.cookie('checkboxValues');
+        if (checkboxValues) {
+          Object.keys(checkboxValues).forEach(function(element) {
+            var checked = checkboxValues[element];
+            $("#" + element).prop('checked', checked);
           });
-          
-          userMarker.setIcon("https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=glyphish_walk|FBA");
-                  
-          // Call function that attempts to find user's location
-          getLocation ();
         }
-        
-        
-        // Function that retrieves user's initial location and
-        // then continues to track their position on the map.
-        // Users must agree to share their position.
-        
-        function getLocation() {
-            
-          if (navigator.geolocation)
-            {
-            // Attempt to track user's position.
-            watchGPS = navigator.geolocation.watchPosition(function (position) {
-            
-                  // Store the reading of the longitude and latitute
-                  var userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                  
-                  // Update the user map marker
-                  userMarker.setPosition (userLocation);
-                
-                });
-            }
-            
-          else {
-              alert("Geolocation is not supported by this browser.");
-            }
+      }
+      $.cookie.json = true;
+      repopulateCheckboxes();
+    </script>
+    <script>
+      // CODE EXAMPLE FOR A GEOLOCATIVE APP WITH GOOGLE MAPS.
+       // READ MORE AT:
+       // https://developers.google.com/maps/documentation
+       // http://www.w3schools.com/html/html5_geolocation.asp
+       // Public variables
+      var map, userMarker, watchGPS;
+       // Function that draws the map and overlays custom data.
+      function initialise() {
+        $("#map-canvas").css('width', '100%');
+        $("#map-canvas").css('height', '300px');
+        map = new google.maps.Map(document.getElementById('map-canvas'));
+        // Replace the URL with the URL of your own google map.
+        // Right-click the KML symbol and copy the URL.
+        var kmlLayer = new google.maps.KmlLayer('https://mapsengine.google.com/map/kml?hl=en&authuser=0&mid=zmFg-0lw5lnE.kjEwlyHzJHR4', {
+          suppressInfoWindows: false
+        });
+        kmlLayer.setMap(map);
+        // Create custom icon showing the location of the user
+        userMarker = new google.maps.Marker({
+          map: map,
+          title: "You are here!"
+        });
+        userMarker.setIcon("https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=glyphish_walk|FBA");
+        // Call function that attempts to find user's location
+        getLocation();
+      }
+       // Function that retrieves user's initial location and
+       // then continues to track their position on the map.
+       // Users must agree to share their position.
+      function getLocation() {
+        if (navigator.geolocation) {
+          // Attempt to track user's position.
+          watchGPS = navigator.geolocation.watchPosition(function(position) {
+            // Store the reading of the longitude and latitute
+            var userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            // Update the user map marker
+            userMarker.setPosition(userLocation);
+          });
+        } else {
+          alert("Geolocation is not supported by this browser.");
         }
-  </script>
+      }
+    </script>
     <style>
       .info {
         background: #ffffdd url("http://i57.tinypic.com/1eo1tu.png");
@@ -770,49 +769,50 @@
         $("#vegList").trigger("create");
       });
       $("#page2").on("pagecreate", function(event) {
-        makeShoppinglist ();
+        makeShoppinglist();
         console.log("running")
       });
       $("#page8").on("pagecreate", function(event) {
         updateList();
       });
-     
-      function makeShoppinglist () {
-      $.each($("input .fruit"), function(key, fruit) {
-        if (fruit.is(":checked")) {
-          shoppingList.fruit.push({
-            name: $(fruit).attr("name"),
-            state: false
-          });
-        };
-      });
-      $.each($("input .veg"), function(key, veg) {
-        if (veg.val() == true) {
-          shoppingList.veg.push({
-            name: $(veg).attr("name"),
-            state: false
-          });
-        };
-      });
-      $.each($("input .pantry"), function(key, pantry) {
-        if (pantry.val() == true) {
-          shoppingList.pantry.push({
-            name: $(pantry).attr("name"),
-            state: false
-          });
-        };
-      });
-      $.each($("input .custom"), function(key, custom) {
-        if (custom.val() == true) {
-          shoppingList.custom.push({
-            name: $(custom).attr("name"),
-            state: false
-          });
-        };
-      });
-      console.log(shoppingList)
+
+      function makeShoppinglist() {
+        $.each($("input .fruit"), function(key, fruit) {
+          if (fruit.is(":checked")) {
+            shoppingList.fruit.push({
+              name: $(fruit).attr("name"),
+              state: false
+            });
+          };
+        });
+        $.each($("input .veg"), function(key, veg) {
+          if (veg.val() == true) {
+            shoppingList.veg.push({
+              name: $(veg).attr("name"),
+              state: false
+            });
+          };
+        });
+        $.each($("input .pantry"), function(key, pantry) {
+          if (pantry.val() == true) {
+            shoppingList.pantry.push({
+              name: $(pantry).attr("name"),
+              state: false
+            });
+          };
+        });
+        $.each($("input .custom"), function(key, custom) {
+          if (custom.val() == true) {
+            shoppingList.custom.push({
+              name: $(custom).attr("name"),
+              state: false
+            });
+          };
+        });
+        console.log(shoppingList)
         console.log($("input .veg"))
       }
+
       function updateList() {
         $("#customList").html("")
         for (i = 0; i < custom.length; i++) {
