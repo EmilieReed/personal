@@ -154,78 +154,91 @@
         "desc": "Apples good for storing.",
         "period": "October to January",
         "peak": "November",
+        "showif[]":[10, 11, 12, 1],
         "check": false
       }, {
         "name": "Bramley Apple",
         "desc": "Apples good for cooking.",
         "period": "July to September",
         "peak": "August",
+        "showif[]":[7, 8, 9],
         "check": false
       }, {
         "name": "Blackberries",
         "desc": "Great as a snack or to make jam.",
         "period": "July to November",
         "peak": "September",
+        "showif[]":[7, 8, 9, 10, 11],
         "check": false
       }, {
         "name": "Blueberries",
         "desc": "Small tangy and sweet berries common in fruit salad and baking.",
         "period": "July to October",
         "peak": "September",
+        "showif[]":[7, 8, 9, 10],
         "check": false
       }, {
         "name": "Cherries",
         "desc": "Sweet in pies or fruit salad. Has a pit.",
         "period": "June to August",
         "peak": "July",
+        "showif[]":[6, 7, 8],
         "check": false
       }, {
         "name": "Cranberries",
         "desc": "Tangy. Often used to make sauces.",
         "period": "November and December",
         "peak": "November",
+        "showif[]":[11, 12],
         "check": false
       }, {
         "name": "Figs",
         "desc": "Delicately sweet fruit.",
         "period": "July to October",
         "peak": "August",
+        "showif[]":[7, 8, 9, 10],
         "check": false
       }, {
         "name": "Bartlett Pears",
         "desc": "A juicy pear good for sauces and butters.",
         "period": "May to August",
         "peak": "June",
+        "showif[]":[5, 6, 7, 8],
         "check": false
       }, {
         "name": "Concorde Pears",
         "desc": "The most popular type of pear.",
         "period": "September to January",
         "peak": "November",
+        "showif[]":[8, 9, 10, 11, 12, 1],
         "check": false
       }, {
         "name": "Greengage Plums",
         "desc": "Suprisingly sweet small green plums.",
         "period": "June to August",
         "peak": "July",
+        "showif[]":[6, 7, 8],
         "check": false
       }, {
         "name": "Victoria Plums",
         "desc": "A sweet table fruit also good for cooking.",
         "period": "July to September",
         "peak": "August",
+        "showif[]":[7, 8, 9],
         "check": false
       }, {
         "name": "Raspberries",
         "desc": "An elegant dessert garnish or healthy snack.",
         "period": "June to October",
         "peak": "August",
+        "showif[]":[6, 7, 8, 9, 10],
         "check": false
       }, {
         "name": "Strawberries",
         "desc": "Popular in jams, desserts, and as a snack.",
         "period": "May to August",
         "peak": "June",
+        "showif[]":[5, 6, 7, 8],
         "check": false
       }];
       var veg = [{
@@ -233,60 +246,70 @@
         "desc": "A variety of sunflower which produces a slightly sweet root vegetable.",
         "period": "October to February",
         "peak": "December",
+        "showif[]":[10, 11, 12, 1, 2],
         "check": false
       }, {
         "name": "Globe Artichoke",
         "desc": "An edible form of thistle that can be boiled, steamed or preserved.",
         "period": "June to November",
         "peak": "August",
+        "showif[]":[6, 7, 8, 9, 10, 11],
         "check": false
       }, {
         "name": "Asparagus",
         "desc": "A spring vegetable that makes a good side dish.",
         "period": "April to July",
         "peak": "May",
+        "showif[]":[7, 8, 9, 10, 11],
         "check": false
       }, {
         "name": "Aubergine",
         "desc": "A purple fruit that becomes smooth and soft when cooked.",
         "period": "April to October",
         "peak": "July",
+        "showif[]":[4, 5, 6, 7, 8, 9, 10],
         "check": false
       }, {
         "name": "Beetroot",
         "desc": "Try serving cold in a salad or make pickles.",
         "period": "June to March",
         "peak": "September",
+        "showif[]":[6,7,8,9,10,11,12,1,2,3],
         "check": false
       }, {
         "name": "Broccoli",
         "desc": "Full of vitamins and fiber, delicious steamed or raw with dip.",
         "period": "April to November",
         "peak": "June",
+        "showif[]":[4,5,6,7,8,9,10,11],
         "check": false
       }, {
         "name": "Brussels Sprouts",
         "desc": "Edible sprouts which look like small cabbages.",
         "period": "October to March",
         "peak": "December",
+        "showif[]":[10,11,12,1,2,3],
         "check": false
       }, {
         "name": "White Cabbage",
         "desc": "A versatile veggie which can be boiled, pickled, or used raw.",
         "period": "October to February",
         "peak": "December",
+        "showif[]":[10,11,12,1,2],
         "check": false
       }, {
         "name": "Red Cabbage",
         "desc": "Used in raw salads, coleslaw or as a side to meat dishes.",
         "period": "June to October",
         "peak": "August",
+        "showif[]":[6,7,8,9,10],
         "check": false
       }, {
         "name": "Savoy Cabbage",
         "desc": "Rich in vitamins and can keep for many weeks. Pairs well with spices and meat.",
         "period": "September to February",
         "peak": "December",
+        "showif[]":[9,10,11,12,1,2],
         "check": false
       }, {
         "name": "Spring Greens",
@@ -569,21 +592,21 @@
       $("#page7").on("pagecreate", function(event) {
         for (i = 0; i < Pantry.length; i++) {
           console.log("running")
-          $("#pantryList").append('<label><input type="checkbox" name= pantry[i].name > ' + Pantry[i].name + ' </label>');
+          $("#pantryList").append('<label><input type="checkbox" name="'+Pantry[i].name+'" class="pantry"> ' + Pantry[i].name + ' </label>');
         }
         $("#pantryList").trigger("create");
       });
       $("#page6").on("pagecreate", function(event) {
         for (i = 0; i < fruit.length; i++) {
           console.log("running")
-          $("#fruitList").append('<a class="info" href="#" onclick="infoFruit(' + i + ')"></a><label><input type="checkbox" name= fruit[i].name > ' + fruit[i].name + '</label>');
+          $("#fruitList").append('<a class="info" href="#" onclick="infoFruit(' + i + ')"></a><label><input class ="fruit" type="checkbox" name="'+ fruit[i].name +'"> ' + fruit[i].name + '</label>');
         }
         $("#fruitList").trigger("create");
       });
       $("#page6").on("pagecreate", function(event) {
         for (i = 0; i < veg.length; i++) {
           console.log("running")
-          $("#vegList").append('<a class="info" href="#" onclick="infoVeg(' + i + ')"></a><label><input type="checkbox" name= veg[i].name > ' + veg[i].name + ' </label>');
+          $("#vegList").append('<a class="info" href="#" onclick="infoVeg(' + i + ')"></a><label><input class ="veg" type="checkbox" name="'+ veg[i].name +'"> ' + veg[i].name + ' </label>');
         }
         $("#vegList").trigger("create");
       });
@@ -623,7 +646,7 @@
         $("#customList").html("")
         for (i = 0; i < custom.length; i++) {
           console.log("running")
-          $("#customList").append('<label><input type="checkbox" name= custom[i].name> ' + custom[i].name + ' </label>');
+          $("#customList").append('<label><input class="custom" type="checkbox" name="'+custom[i].name+'"> ' + custom[i].name + ' </label>');
         }
         $("#customList").trigger("create");
       };
