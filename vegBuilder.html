@@ -208,8 +208,6 @@
           <tr>
             <th class="tg-xha5"></th>
             <th class="tg-xha5">What's in season?</th>
-              <br>
-            </th>
           </tr>
           <tr>
             <td class="tg-fqpo">JAN</td>
@@ -297,7 +295,7 @@
       </div>
       <div role="main" class="ui-content">
         <div id="customList"></div>
-        <input type="text" id="customInput" onenter="changeText()"> <a href="#" onclick="addCustom()" data-role="button">Add to list</a>
+        <input type="text" id="customInput" onenter="changeText()"> <a href="#" onclick="addCustom()" data-role="button">Add Custom Item</a>
         <br>
 <a href="#page1" data-role="button">Back</a>
       </div>
@@ -848,7 +846,7 @@
       function clearCustom() {
         if (confirm("Are you sure you would like to clear your custom data?")) {
           custom = [];
-          updateList();
+          clearCustomlist();
         }
       };
 
@@ -900,6 +898,15 @@
 
       function updateList() {
         //$("#customList").html("")
+        for (i = 0; i < custom.length; i++) {
+          console.log("running")
+          $("#customList").append('<label><input class="custom" type="checkbox" name="' + custom[i].name + '"> ' + custom[i].name + ' </label>');
+        }
+        $("#customList").trigger("create");
+      };
+
+      function clearCustomlist() {
+        $("#customList").html("")
         for (i = 0; i < custom.length; i++) {
           console.log("running")
           $("#customList").append('<label><input class="custom" type="checkbox" name="' + custom[i].name + '"> ' + custom[i].name + ' </label>');
