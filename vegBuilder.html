@@ -16,6 +16,61 @@
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="jquery.confirm.js"></script>
     <script src="http://cdn.jsdelivr.net/jquery.cookie/1.4.0/jquery.cookie.min.js"></script>
+    <style type="text/css">
+      .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      .tg td {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        padding: 10px 5px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+      }
+      .tg th {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        padding: 10px 5px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+      }
+      .tg .tg-xha5 {
+        background-color: #fffe65
+      }
+      .tg .tg-fqpo {
+        background-color: #cbcefb
+      }
+      .tg .tg-yp2e {
+        background-color: #9698ed
+      }
+      .tg .tg-lkh3 {
+        background-color: #9aff99
+      }
+      .tg .tg-405i {
+        background-color: #67fd9a
+      }
+      .tg .tg-uhkr {
+        background-color: #ffce93
+      }
+      .tg .tg-ntfa {
+        background-color: #fe996b
+      }
+      .tg .tg-mhof {
+        background-color: #ffce93
+      }
+      .tg .tg-wsnc {
+        background-color: #fffc9e
+      }
+      .tg .tg-p2e8 {
+        background-color: #ffcc67
+      }
+    </style>
     <style>
       html,
       body,
@@ -28,7 +83,7 @@
         text-decoration: line-through;
       }
       .shoplist {
-        
+        text-decoration: none;
       }
     </style>
     <link rel="stylesheet" href="bower_components/todomvc-common/base.css">
@@ -89,7 +144,7 @@
     </script>
     <style>
       .info {
-        background: #ffffdd url("http://i57.tinypic.com/1eo1tu.png");
+        background: #ddddff url("http://i57.tinypic.com/1eo1tu.png");
         border-radius: 10%;
         background-size: 100% 100%;
         background-repeat: no-repeat;
@@ -145,60 +200,66 @@
         <h1>Food Calendar</h1>
       </div>
       <div role="main" class="ui-content">
-        <table>
+        <table class="tg" style="undefined;table-layout: fixed; width: 280px">
+          <colgroup>
+            <col style="width: 40px">
+              <col style="width: 240px">
+          </colgroup>
           <tr>
-            <td>Month</td>
-            <td>Seasonal Veg</td>
+            <th class="tg-xha5"></th>
+            <th class="tg-xha5">What's in season?</th>
+              <br>
+            </th>
           </tr>
           <tr>
-            <td>JAN</td>
-            <td>STUFF</td>
+            <td class="tg-fqpo">JAN</td>
+            <td class="tg-fqpo"></td>
           </tr>
           <tr>
-            <td>FEB</td>
-            <td>STUFF</td>
+            <td class="tg-yp2e">FEB</td>
+            <td class="tg-yp2e"></td>
           </tr>
           <tr>
-            <td>MAR</td>
-            <td>STUFF</td>
+            <td class="tg-lkh3">MAR</td>
+            <td class="tg-lkh3"></td>
           </tr>
           <tr>
-            <td>APR</td>
-            <td>STUFF</td>
+            <td class="tg-405i">APR</td>
+            <td class="tg-405i"></td>
           </tr>
           <tr>
-            <td>MAY</td>
-            <td>STUFF</td>
+            <td class="tg-lkh3">MAY</td>
+            <td class="tg-lkh3"></td>
           </tr>
           <tr>
-            <td>JUN</td>
-            <td>STUFF</td>
+            <td class="tg-uhkr">JUN</td>
+            <td class="tg-uhkr"></td>
           </tr>
           <tr>
-            <td>JUL</td>
-            <td>STUFF</td>
+            <td class="tg-ntfa">JUL</td>
+            <td class="tg-ntfa"></td>
           </tr>
           <tr>
-            <td>AUG</td>
-            <td>STUFF</td>
+            <td class="tg-mhof">AUG</td>
+            <td class="tg-mhof"></td>
           </tr>
           <tr>
-            <td>SEP</td>
-            <td>STUFF</td>
+            <td class="tg-wsnc">SEP</td>
+            <td class="tg-wsnc"></td>
           </tr>
           <tr>
-            <td>OCT</td>
-            <td>STUFF</td>
+            <td class="tg-p2e8">OCT</td>
+            <td class="tg-p2e8"></td>
           </tr>
           <tr>
-            <td>NOV</td>
-            <td>STUFF</td>
+            <td class="tg-wsnc">NOV</td>
+            <td class="tg-wsnc"></td>
           </tr>
           <tr>
-            <td>DEC</td>
-            <td>STUFF</td>
+            <td class="tg-yp2e">DEC</td>
+            <td class="tg-yp2e"></td>
           </tr>
-        </table> <a href="#page3" data-role="button">Back</a>
+        </table><a href="#page3" data-role="button">Back</a>
       </div>
     </div>
     <div data-role="page" id="page5">
