@@ -258,10 +258,10 @@
     </div>
     <script>
       var shoppingList = {};
-      shoppingList.fruit = {};
-      shoppingList.veg = {};
-      shoppingList.custom = {};
-      shoppingList.pantry = {};
+      shoppingList.fruit = [];
+      shoppingList.veg = [];
+      shoppingList.custom = []
+      shoppingList.pantry = [];
       var fruit = [{
         "name": "Cox Apple",
         "desc": "Apples good for storing.",
@@ -762,7 +762,35 @@
       $("#page8").on("pagecreate", function(event) {
         updateList();
       });
+      
+      $(document).on('change','input:checkbox', function(){
+        if ($(this).is(':checked')) {
+          addToShoppingList($(this).attr("name"), $(this).attr("class"))
+        }
+        else {
+          removeFromShoppingList($(this).attr("name"), $(this).attr("class"))
+        };
+      });
 
+      function addToShoppingList (name, list) {
+        
+        shoppingList[list].push({
+          name: name,
+          state: false
+        });
+        
+        console.log (shoppingList);
+      };
+      
+      function removeFromShoppingList (name, list) {
+        
+        $(shoppingList[list]).each(function (key, item) {
+          if (item.name == name) shoppingList[list].splice(key,1);
+        });
+        
+        console.log (shoppingList);
+      };
+      
       function makeShoppinglist() {
         $.each($("input .fruit"), function(key, fruit) {
           if (fruit.is(":checked")) {
@@ -824,6 +852,9 @@
           role: 'dialog'
         });
       };
+      
+      
+      
       var d = new Date();
       var month = d.getMonth();
       var show = (month+1);
