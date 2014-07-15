@@ -24,7 +24,11 @@
         margin: 0px;
         padding: 0px
       }
+      .strike {
+        text-decoration: line-through;
+      }
     </style>
+    
     <link rel="stylesheet" href="bower_components/todomvc-common/base.css">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
@@ -792,38 +796,44 @@
         });
       };
 
-      function strikeitem(name, list) {}
+      function strike(name, list) {
+        $(this).toggleClass('strike');
+      }
 
       function makeShoppinglist() {
         //        console.log (shoppingList);
         var htmlString = "<h3>Fruit</h3>";
         htmlString += "<ul>";
         $.each(shoppingList.fruit, function(key, item) {
-          var style = (item.state) ? '' : 'strike';
-          htmlString += '<li class="' + style + '">' + item.name + '</li>';
+          var style =''; //(item.state) ? '' : 'strike';
+          htmlString += '<li>' + item.name + '</li>';
         });
         htmlString += "</ul>";
         htmlString += "<h3>Vegetables</h3>";
         htmlString += "<ul>";
         $.each(shoppingList.veg, function(key, item) {
           var style = (item.state) ? '' : 'strike';
-          htmlString += '<li class="' + style + '">' + item.name + '</li>';
+          htmlString += '<li>' + item.name + '</li>';
         });
         htmlString += "</ul>";
         htmlString += "<h3>Pantry</h3>";
         htmlString += "<ul>";
         $.each(shoppingList.pantry, function(key, item) {
           var style = (item.state) ? '' : 'strike';
-          htmlString += '<li class="' + style + '">' + item.name + '</li>';
+          htmlString += '<li>' + item.name + '</li>';
         });
         htmlString += "</ul>";
         htmlString += "<h3>Other</h3>";
         $.each(shoppingList.custom, function(key, item) {
           var style = (item.state) ? '' : 'strike';
-          htmlString += '<label><input class="custom" type="checkbox">' + item.name + '</label>';
+          htmlString += '<li>' + item.name + '</li>';
         });
         $("#shoppinglistcontainer").html(htmlString);
       }
+      $("#shoppinglistcontainer ol li").on("click", function (){
+        alert("click")
+        $(this).toggleClass("strike");
+      })
 
       function updateList() {
         //$("#customList").html("")
