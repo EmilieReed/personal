@@ -116,17 +116,7 @@
         <h1>Shopping List</h1>
       </div>
       <div role="main" class="ui-content">
-        <h3>Fruit</h3>
-        <div id="shoppingList.fruit"></div>
-        <br>
-        <h3>Vegetables</h3>
-        <div id="shoppingList.veg"></div>
-        <br>
-        <h3>Pantry</h3>
-        <div id="shoppingList.pantry"></div>
-        <br>
-        <h3>Other</h3>
-        <div id="shoppingList.custom"></div>
+      <div id="shoppinglistcontainer"></div>
         <br> <a href="#page1" data-role="button">Back</a>
       </div>
     </div>
@@ -139,7 +129,7 @@
         </center>
         <br> <a href="#page4" data-role="button">View Calendar</a>
         <a href="#page5" data-role="button">View Map</a>
-        <button class="confirm" type="button">Clear Shopping List</button>
+        <button class="confirm" type="button" onclick="clearShoppinglist();">Clear Shopping List</button>
         <button class="confirm" type="button">Clear Custom Data</button> <a href="#page1" data-role="button">Back</a>
       </div>
     </div>
@@ -755,9 +745,8 @@
         }
         $("#vegList").trigger("create");
       });
-      $("#page2").on("pagecreate", function(event) {
+      $("#page2").on("pagebeforeshow", function(event) {
         makeShoppinglist();
-        console.log("running")
       });
       $("#page8").on("pagecreate", function(event) {
         updateList();
@@ -779,7 +768,18 @@
           state: false
         });
         
-        console.log (shoppingList);
+      };
+      
+
+      function clearShoppingList () {
+        
+        if (confirm("Are you sure you would like to clear your shopping list?")) {
+          shoppingList.fruit = {};
+          shoppingList.veg = {};
+          shoppingList.pantry = {};
+          shoppingList.custom = {};
+        }
+        
       };
       
       function removeFromShoppingList (name, list) {
@@ -788,44 +788,56 @@
           if (item.name == name) shoppingList[list].splice(key,1);
         });
         
-        console.log (shoppingList);
       };
       
+      function strikeitem (name, list) {
+        
+      }
+      
       function makeShoppinglist() {
-        $.each($("input .fruit"), function(key, fruit) {
-          if (fruit.is(":checked")) {
-            shoppingList.fruit.push({
-              name: $(fruit).attr("name"),
-              state: false
-            });
-          };
+//        console.log (shoppingList);
+        var htmlString = "<h3>Fruit</h3>";
+        
+        htmlString += "<ul>";
+
+        $.each(shoppingList.fruit, function(key, item) {
+          var style = (item.state) ? '' : 'strike';
+          htmlString += '<li class="' + style + '">' + item.name + '</li>';
         });
-        $.each($("input .veg"), function(key, veg) {
-          if (veg.val() == true) {
-            shoppingList.veg.push({
-              name: $(veg).attr("name"),
-              state: false
-            });
-          };
+        
+        htmlString += "</ul>";
+        
+        htmlString += "<h3>Vegetables</h3>";
+        
+        htmlString += "<ul>";
+        $.each(shoppingList.veg,function(key, item) {
+          var style = (item.state) ? '' : 'strike';
+          htmlString += '<li class="' + style + '">' + item.name + '</li>';
         });
-        $.each($("input .pantry"), function(key, pantry) {
-          if (pantry.val() == true) {
-            shoppingList.pantry.push({
-              name: $(pantry).attr("name"),
-              state: false
-            });
-          };
+        
+        htmlString += "</ul>";
+        
+        htmlString += "<h3>Pantry</h3>";
+        
+        htmlString += "<ul>";
+        $.each(shoppingList.pantry,function(key, item) {
+          var style = (item.state) ? '' : 'strike';
+          htmlString += '<li class="' + style + '">' + item.name + '</li>';
         });
-        $.each($("input .custom"), function(key, custom) {
-          if (custom.val() == true) {
-            shoppingList.custom.push({
-              name: $(custom).attr("name"),
-              state: false
-            });
-          };
+        
+        htmlString += "</ul>";
+        htmlString += "<h3>Other</h3>";
+        
+        htmlString += "<ul>";
+        $.each(shoppingList.custom,function(key, item) {
+          var style = (item.state) ? '' : 'strike';
+          htmlString += '<li class="' + style + '">' + item.name + '</li>';
         });
-        console.log(shoppingList)
-        console.log($("input .veg"))
+        
+        htmlString += "</ul>";
+        
+        $("#shoppinglistcontainer").html(htmlString);
+        
       }
 
       function updateList() {
