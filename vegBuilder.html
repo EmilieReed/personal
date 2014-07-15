@@ -27,8 +27,10 @@
       .strike {
         text-decoration: line-through;
       }
+      .shoplist {
+        
+      }
     </style>
-    
     <link rel="stylesheet" href="bower_components/todomvc-common/base.css">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
@@ -722,9 +724,8 @@
         });
         console.log(custom)
         $("#customInput").val("");
-        $("#customList").append('<label><input class="custom" type="checkbox" name="' + newtext  + '"> ' + newtext + ' </label>');
+        $("#customList").append('<label><input class="custom" type="checkbox" name="' + newtext + '"> ' + newtext + ' </label>');
         $("#customList").trigger("create");
-
       }
       $("#page7").on("pagecreate", function(event) {
         for (i = 0; i < Pantry.length; i++) {
@@ -805,7 +806,7 @@
         var htmlString = "<h3>Fruit</h3>";
         htmlString += "<ul>";
         $.each(shoppingList.fruit, function(key, item) {
-          var style =''; //(item.state) ? '' : 'strike';
+          var style = ''; //(item.state) ? '' : 'strike';
           htmlString += '<li>' + item.name + '</li>';
         });
         htmlString += "</ul>";
@@ -824,13 +825,14 @@
         });
         htmlString += "</ul>";
         htmlString += "<h3>Other</h3>";
+        htmlString += "<ul>";
         $.each(shoppingList.custom, function(key, item) {
           var style = (item.state) ? '' : 'strike';
           htmlString += '<li>' + item.name + '</li>';
         });
         $("#shoppinglistcontainer").html(htmlString);
       }
-      $("#shoppinglistcontainer ol li").on("click", function (){
+      $("#shoppinglistcontainer ol li").on("click", function() {
         alert("click")
         $(this).toggleClass("strike");
       })
